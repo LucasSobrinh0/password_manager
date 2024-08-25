@@ -9,17 +9,23 @@ from kivy.uix.popup import Popup
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.gridlayout import GridLayout
 from utils import generate_password
+from kivy.core.window import Window 
+
+Window.clearcolor = (0,0,0,0)
 
 class MenuScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         layout = BoxLayout(orientation='vertical', padding=20, spacing=10)
 
-        btn_generate = Button(text="Gerar Senha", size_hint=(1, 0.2))
+        title = Label(text = 'Gerenciador de Senhas', font_size ='32sp', color =(1,1,1,1), size_hint =(1,0.2))
+        layout.add_widget(title)
+
+        btn_generate = Button(text="Gerar Senha", size_hint=(1, 0.2),background_color=(0.4, 0.4, 0.4, 1),font_size ='20sp',color=(1, 1, 1, 1))
         btn_generate.bind(on_press=self.go_to_generate_password)
         layout.add_widget(btn_generate)
 
-        btn_store = Button(text="Armazenar Senhas e Login", size_hint=(1, 0.2))
+        btn_store = Button(text="Armazenar Senhas e Login",size_hint=(1, 0.2),background_color=(0.4, 0.4, 0.4, 1),font_size ='20sp',color=(1, 1, 1, 1))
         btn_store.bind(on_press=self.go_to_store_passwords)
         layout.add_widget(btn_store)
 
@@ -36,18 +42,18 @@ class GeneratePasswordScreen(Screen):
         super().__init__(**kwargs)
         layout = BoxLayout(orientation='vertical', padding=20, spacing=10)
 
-        self.password_input = TextInput(hint_text='Generated Password', readonly=True, font_size=24)
+        self.password_input = TextInput(hint_text='Generated Password',readonly=True,font_size=24)
         layout.add_widget(self.password_input)
 
-        generate_button = Button(text='Generate Password', size_hint=(1, 0.2))
+        generate_button = Button(text='Generate Password', size_hint=(1, 0.2),background_color=(0.4, 0.4, 0.4, 1),font_size ='20sp',color=(1, 1, 1, 1))
         generate_button.bind(on_press=self.generate_password)
         layout.add_widget(generate_button)
 
-        copy_button = Button(text='Copy Password', size_hint=(1, 0.2))
+        copy_button = Button(text='Copy Password', size_hint=(1, 0.2),background_color=(0.4, 0.4, 0.4, 1),font_size ='20sp',color=(1, 1, 1, 1))
         copy_button.bind(on_press=self.copy_password)
         layout.add_widget(copy_button)
 
-        back_button = Button(text='Voltar', size_hint=(1, 0.2))
+        back_button = Button(text='Voltar', size_hint=(1, 0.2),background_color=(0.4, 0.4, 0.4, 1),font_size ='20sp',color=(1, 1, 1, 1))
         back_button.bind(on_press=self.go_back)
         layout.add_widget(back_button)
 
@@ -78,12 +84,12 @@ class StorePasswordsScreen(Screen):
         layout.add_widget(self.scroll_view)
 
         # Botão para adicionar login
-        add_button = Button(text='Adicionar Login', size_hint=(1, 0.1))
+        add_button = Button(text='Adicionar Login', size_hint=(1, 0.1),background_color=(0.4, 0.4, 0.4, 1),font_size ='20sp',color=(1, 1, 1, 1))
         add_button.bind(on_press=self.show_add_popup)
         layout.add_widget(add_button)
 
         # Botão para voltar
-        back_button = Button(text='Voltar', size_hint=(1, 0.1))
+        back_button = Button(text='Voltar', size_hint=(1, 0.1),background_color=(0.4, 0.4, 0.4, 1),font_size ='20sp',color=(1, 1, 1, 1))
         back_button.bind(on_press=self.go_back)
         layout.add_widget(back_button)
 
@@ -136,9 +142,9 @@ class StorePasswordsScreen(Screen):
 def show_add_popup(self, instance):
     content = BoxLayout(orientation='vertical', padding=20, spacing=10)
 
-    self.login_name_input = TextInput(hint_text='Nome do Login (Ex: Serasa)', multiline=False)
-    self.login_user_input = TextInput(hint_text='Email ou Nome de Usuário', multiline=False)
-    self.login_password_input = TextInput(hint_text='Senha', multiline=False)
+    self.login_name_input = TextInput(hint_text='Nome do Login (Ex: Serasa)', multiline=False,background_color=(0.4, 0.4, 0.4, 1))
+    self.login_user_input = TextInput(hint_text='Email ou Nome de Usuário', multiline=False,background_color=(0.4, 0.4, 0.4, 1))
+    self.login_password_input = TextInput(hint_text='Senha', multiline=False,background_color=(0.4, 0.4, 0.4, 1))
 
     content.add_widget(self.login_name_input)
     content.add_widget(self.login_user_input)
