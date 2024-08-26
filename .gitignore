@@ -1,0 +1,18 @@
+# Ignorar arquivos de ambiente
+.env
+
+# Ignorar arquivos compilados
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Ignorar arquivos temporários do editor
+*.swp
+*.swo
+*.log
+
+# Ignorar diretórios de build
+build/
+dist/
+*.egg-info/
